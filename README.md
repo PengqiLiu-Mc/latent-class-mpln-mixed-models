@@ -142,7 +142,7 @@ The main workflow is always the same:
 
 The three scripts simulate data, construct the model inputs, fit the model, and inspect estimates. Each script sources the R interface and compiles the core automatically.
 
-| Script | Classes ($G$) | Subjects ($n$) | Outcomes ($p$) | Visits per subject ($T_i$) | Starts | Free parameters |
+| Script | Classes (`G`) | Subjects (`n`) | Outcomes (`p`) | Visits per subject ($T_i$) | Starts | Free parameters |
 | --- | ---: | ---: | ---: | --- | ---: | ---: |
 | [example_G1_n500.R](examples/example_G1_n500.R) | 1 | 500 | 3 | 4–6 | 1 | 24 |
 | [example_G2_n700.R](examples/example_G2_n700.R) | 2 | 700 | 3 | 3–7 | 3 | 51 |

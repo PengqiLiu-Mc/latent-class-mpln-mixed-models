@@ -174,13 +174,13 @@ All three examples allow up to **2,000 iterations per start**. Starts run sequen
 
 Let subject $i$ belong to latent class $Z_i \in \{1,\ldots,G\}$. At visit $l$, outcome $j$ is a count with conditional distribution
 
-$$
-Y_{ijl} \mid \eta_{ijlg}, Z_i = g \sim \operatorname{Poisson}\!\left(\exp(\eta_{ijlg})\right).
-$$
+```math
+Y_{ijl} \mid \eta_{ijlg}, Z_i = g \sim \text{Poisson}\!\left(\exp(\eta_{ijlg})\right).
+```
 
 For class $g$, the log-intensity vector $\boldsymbol\eta_{ilg}$ at a visit is
 
-$$
+```math
 \boldsymbol\eta_{ilg}
 = o_{il}\mathbf{1}_p + X_{ilg}\boldsymbol\beta_g
 + M_{il}\mathbf{b}_{ig} + \boldsymbol\epsilon_{ilg},
@@ -188,7 +188,7 @@ $$
 \mathbf{b}_{ig} \sim N(0,\Omega_g),
 \qquad
 \boldsymbol\epsilon_{ilg} \sim N(0,\Sigma_g).
-$$
+```
 
 Here, $X_{ilg}$ is the outcome-expanded fixed-effect design and $M_{il}$ places a random intercept and random time slope on each outcome.
 
@@ -199,11 +199,11 @@ Here, $X_{ilg}$ is the outcome-expanded fixed-effect design and $M_{il}$ places 
 
 For `G > 1`, class membership probabilities follow a multinomial logistic model based on subject-level covariates $\mathbf{c}_i$:
 
-$$
+```math
 \log\frac{\pi_{ig}}{\pi_{iG}}
 = \xi_{g0} + \mathbf{c}_i^\top\boldsymbol\xi_g,
 \qquad g=1,\ldots,G-1.
-$$
+```
 
 Class `G` is the reference class. With `gating = NULL`, the gating model is intercept-only. For `G = 1`, the gating model is bypassed and all class probabilities are one.
 
@@ -432,9 +432,9 @@ The random-effect order is outcome 1 intercept/slope, outcome 2 intercept/slope,
 
 The stopping rule compares successive ELBO values. Absolute convergence uses
 
-$$
+```math
 \left|\mathcal{L}_{k}-\mathcal{L}_{k-1}\right| < \texttt{tol},
-$$
+```
 
 and relative convergence divides this difference by $\max(1, |\mathcal{L}_{k-1}|)$. Reaching `max_iter` returns a fit with `converged = FALSE`; it does not automatically raise an error.
 
@@ -451,16 +451,16 @@ Convergence only indicates that the implemented stopping criterion was met. It d
 
 The implementation reports
 
-$$
-\operatorname{variational \; BIC} = -2\mathcal{L}_{\mathrm{final}} + k\log(n),
-$$
+```math
+\text{variational BIC} = -2\mathcal{L}_{\mathrm{final}} + k\log(n),
+```
 
 where `n` is the **number of subjects**, not the number of visits or count observations. For `d_g = data$q_beta[g]` and `q_c` gating covariates, the parameter count is
 
-$$
+```math
 k = \sum_{g=1}^{G} d_g + 3Gp
 + G\frac{p(p+1)}{2} + (G-1)(q_c+1).
-$$
+```
 
 The terms count fixed effects, outcome-specific random intercept/slope covariance blocks, visit-level covariance matrices, and gating coefficients. Known offsets and variational parameters are excluded.
 

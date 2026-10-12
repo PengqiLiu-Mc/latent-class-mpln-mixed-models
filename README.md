@@ -8,6 +8,7 @@ This repository contains sourceable R scripts and a C++ core. It is **not an ins
 
 ## Contents
 
+- [Citation](#citation)
 - [Repository structure](#repository-structure)
 - [Requirements and setup](#requirements-and-setup)
 - [Quick start](#quick-start)
@@ -19,6 +20,29 @@ This repository contains sourceable R scripts and a C++ core. It is **not an ins
 - [Convergence and model comparison](#convergence-and-model-comparison)
 - [Smoke test](#smoke-test)
 - [Troubleshooting and implementation limits](#troubleshooting-and-implementation-limits)
+
+## Citation
+
+If you use this code or the methodology in your research, please cite:
+
+Pengqi Liu, Utkarsh J. Dang, and Sanjeena Subedi (2026).
+**Latent-Class Poisson-Lognormal Mixed Models for Clustering Multivariate Longitudinal Count Data.**
+arXiv preprint arXiv:2610.12860.
+[Read the manuscript](https://arxiv.org/abs/2610.12860).
+
+### BibTeX
+
+```bibtex
+@misc{liu2026latentclass,
+  title         = {Latent-Class Poisson-Lognormal Mixed Models for Clustering Multivariate Longitudinal Count Data},
+  author        = {Liu, Pengqi and Dang, Utkarsh J. and Subedi, Sanjeena},
+  year          = {2026},
+  eprint        = {2610.12860},
+  archivePrefix = {arXiv},
+  primaryClass  = {stat.ME},
+  url           = {https://arxiv.org/abs/2610.12860}
+}
+```
 
 ## Repository structure
 

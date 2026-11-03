@@ -194,6 +194,26 @@ Each script creates `example$data`, `example$truth`, and `fit`. Sourcing another
 
 All three examples allow up to **2,000 iterations per start**. Starts run sequentially, and the three-class example fits 20 starts, so these are larger simulation examples rather than quick installation checks. Their fixed seeds make the simulation and initialization reproducible within an environment. Numerical results can still vary with package versions and computing platforms.
 
+### Using the examples for the simulation study
+
+Each example script generates one simulated dataset and fits the proposed model to that dataset. The examples do not automatically execute the 100 independent replications used for each simulation configuration in the manuscript. The `n_starts` argument specifies the number of initializations for fitting the same dataset, rather than the number of simulation replications.
+
+The sample-size configurations considered in the manuscript are:
+
+| Setting | Example script | Sample sizes (`n`) |
+| --- | --- | --- |
+| `G = 1`, `p = 3` | `examples/example_G1_n500.R` | 100, 300, 500 |
+| `G = 2`, `p = 3` | `examples/example_G2_n700.R` | 300, 500, 700 |
+| `G = 3`, `p = 2` | `examples/example_G3_n500.R` | 500 |
+
+To run an example at another sample size, locate the line beginning with `example <- simulate_manuscript_` near the bottom of the corresponding script, immediately before the model-fitting code, and change its `n` argument. For example, in `examples/example_G1_n500.R`, change `example <- simulate_manuscript_G1_n500(n = 500L, seed = 1L)` to `example <- simulate_manuscript_G1_n500(n = 100L, seed = 1L)` to generate one dataset with 100 subjects.
+
+To extend these examples to the replicated simulation study, repeat data generation and model fitting 100 times for each configuration, using a distinct simulation `seed` for each replication. Save the fitted estimates, true parameter values, true class labels, and estimated class assignments from each replication. Re-running an unchanged example script uses the same simulation seed and therefore does not generate a new replication.
+
+For parameter-recovery summaries, align estimated class labels with the generating labels where applicable, calculate the relative errors defined in Section 3.1 of the manuscript, and summarize these errors across replications using their means and standard deviations. For latent-class recovery, calculate the adjusted Rand index (ARI) between the estimated and true class assignments for each replication and summarize its distribution.
+
+The examples fit the model with the specified number of classes. Reproducing the class-number selection results additionally requires fitting the candidate class counts to each simulated dataset and selecting the model with the smallest variational BIC, as specified in the manuscript.
+
 ## Model specification
 
 Let subject $i$ belong to latent class $Z_i \in \{1,\ldots,G\}$. At visit $l$, outcome $j$ is a count with conditional distribution

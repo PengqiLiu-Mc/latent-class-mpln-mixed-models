@@ -1,5 +1,9 @@
 # Latent-Class Multivariate Poisson–Lognormal Mixed Models
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23934614.svg)](https://doi.org/10.5281/zenodo.23934614)
+
+An archived release of the source code, documentation, and simulation examples is available on [Zenodo](https://doi.org/10.5281/zenodo.23934614). This GitHub repository hosts ongoing development. Please refer to the Zenodo record for the archived files and citation information.
+
 Fit latent-class multivariate Poisson–lognormal (MPLN) mixed models to longitudinal count data using variational expectation–maximization (VEM). The R interface handles data preparation, initialization, and results. An RcppArmadillo source code performs the main numerical updates.
 
 The model combines latent subject classes, outcome-specific random intercepts and time slopes, and correlated visit-level Gaussian noise. It supports unequal numbers of visits, irregular observation times, class-specific fixed-effect designs, and covariates that explain class membership.
